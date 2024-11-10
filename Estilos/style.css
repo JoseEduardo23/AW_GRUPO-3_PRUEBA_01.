@@ -1,0 +1,91 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('/Imagenes/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f0f2f5;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 400px;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    
+}
+.form-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1.8);
+    text-align: center;
+    margin-top: 1rem;
+    
+}
+
+.form-container h2 {
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.form-container label {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #ffffff;
+    text-align: left;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    font-size: 1rem;
+    background: transparent;
+    outline: none;
+    color: #ffffff;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 1.5rem;
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    border-radius: 40px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #45a049;
+}
+
+.form-container p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+.form-container a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.form-container a:hover {
+    text-decoration: underline;
+}
