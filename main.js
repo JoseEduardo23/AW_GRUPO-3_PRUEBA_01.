@@ -1,4 +1,6 @@
-// Alternar entre los formularios de login y registro
+emailjs.init("hZZmaRsh_7kQlnoK9"); 
+
+// Función para alternar entre formularios
 function toggleForms() {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
@@ -33,11 +35,33 @@ const getPassword = async (length = 16) => {
         }
     } catch (error) {
         console.error("Error en la solicitud de la API:", error.message);
-        return ""; // Retorna un string vacío en caso de error
+        return ""; 
     }
 };
 
-// Registro
+// Función para enviar el correo con EmailJS
+async function sendEmail(email, password) {
+    const templateParams = {
+        to_email: email,
+        subject: "Registro Exitoso",
+        message: `¡Gracias por registrarte! Tu contraseña generada es: ${password}`
+    };
+
+    try {
+        const response = await emailjs.send('service_prueba1daw', 'template_kjjryo9', templateParams);
+
+        if (response.status === 200) {
+            console.log('Correo enviado correctamente:', response);
+            alert('Correo enviado con éxito');
+        } else {
+            console.error('Error al enviar el correo:', response);
+        }
+    } catch (error) {
+        console.error('Error al enviar el correo:', error);
+    }
+}
+
+// Registro de Usuario
 document.getElementById("registerForm")?.addEventListener("submit", async (event) => {
     event.preventDefault();
     
@@ -50,13 +74,14 @@ document.getElementById("registerForm")?.addEventListener("submit", async (event
     const password = await getPassword(); // Genera la contraseña
 
     if (password) {
-        // Muestra la contraseña generada en un alert
-        alert(`Tu contraseña generada es: ${password}`);
 
         // Almacena la contraseña generada en sessionStorage para su verificación posterior
         sessionStorage.setItem("generatedPassword", password);
 
-        // Mensaje de éxito simulado, ya que no hay backend para enviar el correo
+        // Enviar correo con la contraseña generada
+        sendEmail(email, password);
+
+        // Mensaje de éxito simulado
         document.getElementById("registerMessage").innerText = "Registro exitoso. Tu contraseña fue generada.";
     } else {
         document.getElementById("registerMessage").innerText = "Error generando la contraseña.";
@@ -80,7 +105,7 @@ document.getElementById("loginForm")?.addEventListener("submit", (event) => {
     // Verifica que la contraseña ingresada coincida con la generada
     if (enteredPassword === generatedPassword) {
         document.getElementById("message").innerText = "Sesión iniciada correctamente";
-        window.location.href = "../public.html"; // Redirige al usuario a la página principal
+        window.location.href = "../public.html"; 
     } else {
         document.getElementById("message").innerText = "Credenciales incorrectas.";
     }
