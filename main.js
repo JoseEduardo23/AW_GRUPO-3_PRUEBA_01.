@@ -44,7 +44,8 @@ async function sendEmail(email, password) {
     const templateParams = {
         to_email: email,
         subject: "Registro Exitoso",
-        message: `¡Gracias por registrarte! Tu contraseña generada es: ${password}`
+        message: `¡Gracias por registrarte! Tu contraseña generada es: ${password}`,
+        from_name: "Grupo 3"
     };
 
     try {
